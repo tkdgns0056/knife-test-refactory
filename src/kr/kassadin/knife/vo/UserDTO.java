@@ -1,19 +1,19 @@
 package kr.kassadin.knife.vo;
 
 public class UserDTO {
-    // È¸¿ø¹øÈ£
-    private int userNum; //ÀÎµ¦½º
-    // È¸¿ø¾ÆÀÌµğ
+    // íšŒì›ë²ˆí˜¸
+    private int userNum; //ì¸ë±ìŠ¤
+    // íšŒì›ì•„ì´ë””
     private String userId;
-    // È¸¿øºñ¹Ğ¹øÈ£
+    // íšŒì›ë¹„ë°€ë²ˆí˜¸
     private String userPassword;
-    // È¸¿ø¼ºÇÔ
+    // íšŒì›ì„±í•¨
     private String userName;
-    // È¸¿øÁÖ¼Ò
+    // íšŒì›ì£¼ì†Œ
     private String userAddress;
-    // È¸¿øÀüÈ­¹øÈ£
+    // íšŒì›ì „í™”ë²ˆí˜¸
     private String userPhonenumber;
-    // È¸¿øµî±Ş (ÀÏ¹İÈ¸¿ø 1, °ü¸®ÀÚ 0)
+    // íšŒì›ë“±ê¸‰ (ì¼ë°˜íšŒì› 1, ê´€ë¦¬ì 0)
     private int grade;
     
     // Getter, Setter    

@@ -8,7 +8,7 @@ import kr.kassadin.knife.vo.UserDTO;
 
 public class MovieTheater {
 
-	// user ¹× ·Î±×ÀÎ °ü·Ã
+	// user ë° ë¡œê·¸ì¸ ê´€ë ¨
 	private UserDTO userDto;
 	private UserDTO loginUser = null;
 	private Scanner scanner;
@@ -16,20 +16,20 @@ public class MovieTheater {
 	private int userNum;
 	private int adminNum;
 
-	// ¿µÈ­ °ü·Ã
+	// ì˜í™” ê´€ë ¨
 	private MovieInfoDTO movieDto;
 	private ArrayList<MovieInfoDTO> movieList;
 	private int movieIdx;
 	
-	//¿¹¾à °ü·Ã
+	//ì˜ˆì•½ ê´€ë ¨
 	private ReservationDTO reservationResult = null;
 	private ArrayList<ReservationDTO> resList;
-	private int reservationId; //ÀÎµ¦½º
+	private int reservationId; //ì¸ë±ìŠ¤
 	private String [][] arr = new String[5][4];
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public MovieTheater() {
-		// À¯Àú °ü·Ã ´õ¹Ì°ªµé
+		// ìœ ì € ê´€ë ¨ ë”ë¯¸ê°’ë“¤
 		userList = new ArrayList<>();
 		userDto = new UserDTO();
 		scanner = new Scanner(System.in);
@@ -39,11 +39,11 @@ public class MovieTheater {
 
 		UserDTO u1 = new UserDTO();
 		u1.setGrade(1);
-		u1.setUserNum(userNum++); // ÀÎµ¦½º Ãß°¡
+		u1.setUserNum(userNum++); // ì¸ë±ìŠ¤ ì¶”ê°€
 		u1.setUserId("user001");
 		u1.setUserPassword("user001");
-		u1.setUserName("Â¥¹«´Ï");
-		u1.setUserAddress("¼­¿ï½Ã °­³²±¸ ´ëÄ¡µ¿");
+		u1.setUserName("ì§œë¬´ë‹ˆ");
+		u1.setUserAddress("ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ëŒ€ì¹˜ë™");
 		u1.setUserPhonenumber("010-1234-1234");
 
 		userList.add(u1);
@@ -65,51 +65,51 @@ public class MovieTheater {
 		movieList = new ArrayList<>();
 		movieIdx = 1;
 		
-		// ¹Ì¸® °ª ³Ö¾îÁÖ±â
+		// ë¯¸ë¦¬ ê°’ ë„£ì–´ì£¼ê¸°
 		MovieInfoDTO m1 = new MovieInfoDTO();
 		m1.setMovieId(movieIdx++);
-		m1.setMovieName("±«¹°");
-		m1.setDirecter("ºÀÁØÈ£");
-		m1.setRunningTime("102ºĞ");
-		m1.setMovieSummary("¾î´À ³¯, ÇÑ°­¿¡ ±«»óÇÑ ±«¹°ÀÌ ³ªÅ¸³ª µşÀ» Àâ¾Æ°£´Ù." + "\n µş°ú Á¶Ä«¸¦ ±¸ÇÏ±â À§ÇØ °¡Á·³¢¸® ¸ğÀÎ »çÅõ±Ø");
+		m1.setMovieName("ê´´ë¬¼");
+		m1.setDirecter("ë´‰ì¤€í˜¸");
+		m1.setRunningTime("102ë¶„");
+		m1.setMovieSummary("ì–´ëŠ ë‚ , í•œê°•ì— ê´´ìƒí•œ ê´´ë¬¼ì´ ë‚˜íƒ€ë‚˜ ë”¸ì„ ì¡ì•„ê°„ë‹¤." + "\n ë”¸ê³¼ ì¡°ì¹´ë¥¼ êµ¬í•˜ê¸° ìœ„í•´ ê°€ì¡±ë¼ë¦¬ ëª¨ì¸ ì‚¬íˆ¬ê·¹");
 		movieList.add(m1);
 
 		MovieInfoDTO m2 = new MovieInfoDTO();
 		m2.setMovieId(movieIdx++);
-		m2.setMovieName("º£Å×¶û");
-		m2.setDirecter("·ù½Â¿Ï");
-		m2.setRunningTime("115ºĞ");
-		m2.setMovieSummary("ÇÑ ¹ø ²ÈÈù °ÍÀº ¹«Á¶°Ç ³¡À» º¸´Â Çàµ¿ÆÄ ¡®¼­µµÃ¶¡¯(È²Á¤¹Î),20³â °æ·ÂÀÇ ½ÂºÎ»ç ¡®¿ÀÆÀÀå¡¯(¿À´Ş¼ö), À§Àå Àü¹® È«ÀÏÁ¡ ¡®¹Ì½ººÀ¡¯(ÀåÀ±ÁÖ)\n, "
-				+ "À°Ã¼ÆÄ ¡®¿ÕÇü»ç¡¯(¿À´ëÈ¯), ¸·³» ¡®À±Çü»ç¡¯(±è½ÃÈÄ)±îÁö °Ì ¾ø°í, ¸ø Àâ´Â °Í ¾ø°í, ºÁÁÖ´Â °Í ¾ø´Â Æ¯¼ö °­·Â»ç°Ç ´ã´ç ±¤¿ª¼ö»ç´ë.\n"
-				+ "¿À·§µ¿¾È ÂÑ´ø ´ëÇü ¹üÁË¸¦ ÇØ°áÇÑ ÈÄ ¼ûÀ» µ¹¸®·Á´Â Âû³ª, ¼­µµÃ¶Àº Àç¹ú 3¼¼ ¡®Á¶ÅÂ¿À¡¯(À¯¾ÆÀÎ)¸¦ ¸¸³ª°Ô µÈ´Ù.\n "
-				+ "¼¼»ó ¹«¼­¿ï °Í ¾ø´Â ¾ÈÇÏ¹«ÀÎÀÇ Á¶ÅÂ¿À¿Í ¾ğÁ¦³ª ±×ÀÇ °çÀ» ÁöÅ°´Â ¿À¸¥ÆÈ ¡®ÃÖ»ó¹«¡¯(À¯ÇØÁø).\n "
-				+ "¼­µµÃ¶Àº ÀÇ¹®ÀÇ »ç°ÇÀ» ÂÑ´ø Áß ±×µéÀÌ »ç°ÇÀÇ ¹èÈÄ¿¡ ÀÖÀ½À» Á÷°¨ÇÑ´Ù.\n "
-				+ "°Çµé¸é ´ÙÄ£´Ù´Â Ãæ°í¿¡µµ ºÒ±¸ÇÏ°í Æ÷±âÇÏÁö ¾Ê´Â ¼­µµÃ¶ÀÇ Áı³ä¿¡ÆÇÀº °ÈÀâÀ» ¼ö ¾øÀÌ Ä¿Á®°¡°í\n "
-				+ "Á¶ÅÂ¿À´Â ÀÌ¸¦ ºñ¿ô±â¶óµµ ÇÏµí À¯À¯È÷ Æ÷À§¸ÁÀ» ºüÁ® ³ª°¡´Âµ¥¡¦ \nº£Å×¶û ±¤¿ª¼ö»ç´ë VS À¯¾Æµ¶Á¸ Àç¹ú 3¼¼2015³â ¿©¸§, \n" + "ÀÚÁ¸½ÉÀ» °Ç ÇÑÆÇ ´ë°áÀÌ ½ÃÀÛµÈ´Ù!");
+		m2.setMovieName("ë² í…Œë‘");
+		m2.setDirecter("ë¥˜ìŠ¹ì™„");
+		m2.setRunningTime("115ë¶„");
+		m2.setMovieSummary("í•œ ë²ˆ ê½‚íŒ ê²ƒì€ ë¬´ì¡°ê±´ ëì„ ë³´ëŠ” í–‰ë™íŒŒ â€˜ì„œë„ì² â€™(í™©ì •ë¯¼),20ë…„ ê²½ë ¥ì˜ ìŠ¹ë¶€ì‚¬ â€˜ì˜¤íŒ€ì¥â€™(ì˜¤ë‹¬ìˆ˜), ìœ„ì¥ ì „ë¬¸ í™ì¼ì  â€˜ë¯¸ìŠ¤ë´‰â€™(ì¥ìœ¤ì£¼)\n, "
+				+ "ìœ¡ì²´íŒŒ â€˜ì™•í˜•ì‚¬â€™(ì˜¤ëŒ€í™˜), ë§‰ë‚´ â€˜ìœ¤í˜•ì‚¬â€™(ê¹€ì‹œí›„)ê¹Œì§€ ê² ì—†ê³ , ëª» ì¡ëŠ” ê²ƒ ì—†ê³ , ë´ì£¼ëŠ” ê²ƒ ì—†ëŠ” íŠ¹ìˆ˜ ê°•ë ¥ì‚¬ê±´ ë‹´ë‹¹ ê´‘ì—­ìˆ˜ì‚¬ëŒ€.\n"
+				+ "ì˜¤ë«ë™ì•ˆ ì«“ë˜ ëŒ€í˜• ë²”ì£„ë¥¼ í•´ê²°í•œ í›„ ìˆ¨ì„ ëŒë¦¬ë ¤ëŠ” ì°°ë‚˜, ì„œë„ì² ì€ ì¬ë²Œ 3ì„¸ â€˜ì¡°íƒœì˜¤â€™(ìœ ì•„ì¸)ë¥¼ ë§Œë‚˜ê²Œ ëœë‹¤.\n "
+				+ "ì„¸ìƒ ë¬´ì„œìš¸ ê²ƒ ì—†ëŠ” ì•ˆí•˜ë¬´ì¸ì˜ ì¡°íƒœì˜¤ì™€ ì–¸ì œë‚˜ ê·¸ì˜ ê³ì„ ì§€í‚¤ëŠ” ì˜¤ë¥¸íŒ” â€˜ìµœìƒë¬´â€™(ìœ í•´ì§„).\n "
+				+ "ì„œë„ì² ì€ ì˜ë¬¸ì˜ ì‚¬ê±´ì„ ì«“ë˜ ì¤‘ ê·¸ë“¤ì´ ì‚¬ê±´ì˜ ë°°í›„ì— ìˆìŒì„ ì§ê°í•œë‹¤.\n "
+				+ "ê±´ë“¤ë©´ ë‹¤ì¹œë‹¤ëŠ” ì¶©ê³ ì—ë„ ë¶ˆêµ¬í•˜ê³  í¬ê¸°í•˜ì§€ ì•ŠëŠ” ì„œë„ì² ì˜ ì§‘ë…ì—íŒì€ ê±·ì¡ì„ ìˆ˜ ì—†ì´ ì»¤ì ¸ê°€ê³ \n "
+				+ "ì¡°íƒœì˜¤ëŠ” ì´ë¥¼ ë¹„ì›ƒê¸°ë¼ë„ í•˜ë“¯ ìœ ìœ íˆ í¬ìœ„ë§ì„ ë¹ ì ¸ ë‚˜ê°€ëŠ”ë°â€¦ \në² í…Œë‘ ê´‘ì—­ìˆ˜ì‚¬ëŒ€ VS ìœ ì•„ë…ì¡´ ì¬ë²Œ 3ì„¸2015ë…„ ì—¬ë¦„, \n" + "ìì¡´ì‹¬ì„ ê±´ í•œíŒ ëŒ€ê²°ì´ ì‹œì‘ëœë‹¤!");
 		movieList.add(m2);
 
 		MovieInfoDTO m3 = new MovieInfoDTO();
 		m3.setMovieId(movieIdx++);
-		m3.setMovieName("°ïÁö¾Ï");
-		m3.setDirecter("Á¤¹ü½Ä");
-		m3.setRunningTime("103ºĞ");
-		m3.setMovieSummary("1979³â È¯ÀÚ 42¸íÀÇ Áı´Ü ÀÚ»ì°ú º´¿øÀåÀÇ ½ÇÁ¾ ÀÌÈÄ,\n"
-				+ "¼¶¶àÇÑ ±«´ãÀ¸·Î µÑ·¯½ÎÀÎ °ïÁö¾Ï Á¤½Åº´¿øÀ¸·Î°øÆ÷Ã¼ÇèÀ» ¶°³­ 7¸íÀÇ ¸â¹öµé¿øÀå½Ç, Áı´Ü Ä¡·á½Ç, ½ÇÇè½Ç, ¿­¸®Áö ¾Ê´Â 402È£¡¦\n"
-				+ "±«´ãÀÇ ½ÇÃ¼¸¦ ´ã¾Æ³»±â À§ÇØº´¿ø ³»ºÎ¸¦ ÃÔ¿µÇÏ±â ½ÃÀÛÇÏ´ø ¸â¹öµé¿¡°Ô»ó»óµµ ¸øÇÑ ±âÀÌÇÏ°í °øÆ÷½º·¯¿î ÀÏµéÀÌ½ÇÁ¦·Î ¹ú¾îÁö±â ½ÃÀÛ ÇÏ´Âµ¥¡¦\n"
-				+ "°¡Áö ¸»¶ó´Â °÷¿¡´Â ¹İµå½Ã ÀÌÀ¯°¡ ÀÖ´Ù.¼Ò¸§ ³¢Ä¡´Â ¡®°ïÁö¾Ï Á¤½Åº´¿ø¡¯ ÀÇ ½ÇÃ¼¸¦ Ã¼ÇèÇÏ¶ó!");
+		m3.setMovieName("ê³¤ì§€ì•”");
+		m3.setDirecter("ì •ë²”ì‹");
+		m3.setRunningTime("103ë¶„");
+		m3.setMovieSummary("1979ë…„ í™˜ì 42ëª…ì˜ ì§‘ë‹¨ ìì‚´ê³¼ ë³‘ì›ì¥ì˜ ì‹¤ì¢… ì´í›„,\n"
+				+ "ì„¬ëœ©í•œ ê´´ë‹´ìœ¼ë¡œ ë‘˜ëŸ¬ì‹¸ì¸ ê³¤ì§€ì•” ì •ì‹ ë³‘ì›ìœ¼ë¡œê³µí¬ì²´í—˜ì„ ë– ë‚œ 7ëª…ì˜ ë©¤ë²„ë“¤ì›ì¥ì‹¤, ì§‘ë‹¨ ì¹˜ë£Œì‹¤, ì‹¤í—˜ì‹¤, ì—´ë¦¬ì§€ ì•ŠëŠ” 402í˜¸â€¦\n"
+				+ "ê´´ë‹´ì˜ ì‹¤ì²´ë¥¼ ë‹´ì•„ë‚´ê¸° ìœ„í•´ë³‘ì› ë‚´ë¶€ë¥¼ ì´¬ì˜í•˜ê¸° ì‹œì‘í•˜ë˜ ë©¤ë²„ë“¤ì—ê²Œìƒìƒë„ ëª»í•œ ê¸°ì´í•˜ê³  ê³µí¬ìŠ¤ëŸ¬ìš´ ì¼ë“¤ì´ì‹¤ì œë¡œ ë²Œì–´ì§€ê¸° ì‹œì‘ í•˜ëŠ”ë°â€¦\n"
+				+ "ê°€ì§€ ë§ë¼ëŠ” ê³³ì—ëŠ” ë°˜ë“œì‹œ ì´ìœ ê°€ ìˆë‹¤.ì†Œë¦„ ë¼ì¹˜ëŠ” â€˜ê³¤ì§€ì•” ì •ì‹ ë³‘ì›â€™ ì˜ ì‹¤ì²´ë¥¼ ì²´í—˜í•˜ë¼!");
 		movieList.add(m3);
 
 		MovieInfoDTO m4 = new MovieInfoDTO();
 		m4.setMovieId(movieIdx++);
-		m4.setMovieName("¾ÆÀú¾¾");
-		m4.setDirecter("ÀÌÁ¤¹ü");
-		m4.setRunningTime("103ºĞ");
-		m4.setMovieSummary("ºÒÇàÇÑ »ç°ÇÀ¸·Î ¾Æ³»¸¦ ÀÒ°í ¼¼»óÀ» µîÁø Ã¤ Àü´çÆ÷¸¦ ¿î¿µÇÏ¸ç ¿Ü·Ó°Ô »ì¾Æ°¡´Â ÀüÁ÷ Æ¯¼ö¿ä¿ø ÅÂ½Ä. \n"
-				+ "ÅÂ½ÄÀº ¼Ò¹Ì¸¦ ±¸ÇÏ±â À§ÇØ ¹üÁËÁ¶Á÷°ú °Å·¡¸¦ ÇÏ°Ô µÇ°í, ÀÌ·Î ÀÎÇØ °æÂû¸¶Àú ÅÂ½ÄÀ» Ãß°İÇÏ°Ô µÈ´Ù.\n"
-				+ " ÇÑ °ÉÀ½¾¿ ÇÑ °ÉÀ½¾¿ ¹üÁËÁ¶Á÷ÀÇ Áß½É¿¡ ´Ù°¡¼­¸é¼­ º£ÀÏ¿¡ ½Î¿©ÀÖ´ø ÅÂ½ÄÀÇ ºñ¹Ğ½º·± °ú°Åµµ ÇÔ²² µå·¯³ª°Ô µÇ´Âµ¥¡¦ ");
+		m4.setMovieName("ì•„ì €ì”¨");
+		m4.setDirecter("ì´ì •ë²”");
+		m4.setRunningTime("103ë¶„");
+		m4.setMovieSummary("ë¶ˆí–‰í•œ ì‚¬ê±´ìœ¼ë¡œ ì•„ë‚´ë¥¼ ìƒê³  ì„¸ìƒì„ ë“±ì§„ ì±„ ì „ë‹¹í¬ë¥¼ ìš´ì˜í•˜ë©° ì™¸ë¡­ê²Œ ì‚´ì•„ê°€ëŠ” ì „ì§ íŠ¹ìˆ˜ìš”ì› íƒœì‹. \n"
+				+ "íƒœì‹ì€ ì†Œë¯¸ë¥¼ êµ¬í•˜ê¸° ìœ„í•´ ë²”ì£„ì¡°ì§ê³¼ ê±°ë˜ë¥¼ í•˜ê²Œ ë˜ê³ , ì´ë¡œ ì¸í•´ ê²½ì°°ë§ˆì € íƒœì‹ì„ ì¶”ê²©í•˜ê²Œ ëœë‹¤.\n"
+				+ " í•œ ê±¸ìŒì”© í•œ ê±¸ìŒì”© ë²”ì£„ì¡°ì§ì˜ ì¤‘ì‹¬ì— ë‹¤ê°€ì„œë©´ì„œ ë² ì¼ì— ì‹¸ì—¬ìˆë˜ íƒœì‹ì˜ ë¹„ë°€ìŠ¤ëŸ° ê³¼ê±°ë„ í•¨ê»˜ ë“œëŸ¬ë‚˜ê²Œ ë˜ëŠ”ë°â€¦ ");
 		movieList.add(m4);
 		
-		//¿¹¾à °ü·Ã
+		//ì˜ˆì•½ ê´€ë ¨
 		reservationResult = new ReservationDTO();
 		resList = new ArrayList<>();
 		reservationId = 1;
@@ -123,42 +123,42 @@ public class MovieTheater {
 
 		System.out.println(" ___________________________");
 		System.out.println("|                           |");
-		System.out.println("|       ¿µÈ­¿¹¸Å ÇÁ·Î±×·¥        |");
+		System.out.println("|       ì˜í™”ì˜ˆë§¤ í”„ë¡œê·¸ë¨        |");
 		System.out.println("|___________________________|");
 		System.out.println();
 
 		while (true) {
 			UserDTO u = new UserDTO();
 			String message;
-			message = new String(" 1.È¸¿ø°¡ÀÔ\n  2.·Î±×ÀÎ\n  3.Á¾·á");
+			message = new String(" 1.íšŒì›ê°€ì…\n  2.ë¡œê·¸ì¸\n  3.ì¢…ë£Œ");
 			int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
 
 			if (userChoice == 1) {
 				System.out.println();
-				System.out.println("¾Æ·¡¿¡ ¸Â°Ô ±âÀÔÀ» ÇØÁÖ¼¼¿ä");
+				System.out.println("ì•„ë˜ì— ë§ê²Œ ê¸°ì…ì„ í•´ì£¼ì„¸ìš”");
 				System.out.println();
 
 				message = new String("Id: ");
 				u.setUserId(ScannerUtil.nextLine(scanner, message));
 				while (validateUsername(u)) {
-					System.out.println("ÀÌ¹Ì µî·ÏµÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù.");
+					System.out.println("ì´ë¯¸ ë“±ë¡ëœ ì•„ì´ë”” ì…ë‹ˆë‹¤.");
 					message = new String("ID: ");
 					u.setUserId(ScannerUtil.nextLine(scanner, message));
 				}
 
-				message = new String("ºñ¹Ğ¹øÈ£: ");
+				message = new String("ë¹„ë°€ë²ˆí˜¸: ");
 				u.setUserPassword(ScannerUtil.nextLine(scanner, message));
 
-				message = new String("¼ºÇÔ: ");
+				message = new String("ì„±í•¨: ");
 				u.setUserName(ScannerUtil.nextLine(scanner, message));
 
-				message = new String("ÁÖ¼Ò: ");
+				message = new String("ì£¼ì†Œ: ");
 				u.setUserAddress(ScannerUtil.nextLine(scanner, message));
 
-				message = new String("ÈŞ´ëÆù¹øÈ£: ");
+				message = new String("íœ´ëŒ€í°ë²ˆí˜¸: ");
 				u.setUserPhonenumber(ScannerUtil.nextLine(scanner, message));
 
-				System.out.println("È¸¿ø°¡ÀÔÀ» ÃàÇÏµå¸³´Ï´Ù!");
+				System.out.println("íšŒì›ê°€ì…ì„ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤!");
 				u.setGrade(1);
 				userList.add(u);
 
@@ -167,22 +167,22 @@ public class MovieTheater {
 				System.out.println("________________________");
 				System.out.println();
 
-				message = new String(" 1. ID/PW ÀÔ·Â\n 2. ¸ŞÀÎÀ¸·Î");
+				message = new String(" 1. ID/PW ì…ë ¥\n 2. ë©”ì¸ìœ¼ë¡œ");
 				userChoice = ScannerUtil.nextInt(scanner, message);
 				
-				// ·Î±×ÀÎ ID/PW ÀÔ·Â
+				// ë¡œê·¸ì¸ ID/PW ì…ë ¥
 				if (userChoice == 1) {
 					message = new String("ID: ");
 					userDto.setUserId(ScannerUtil.nextLine(scanner, message));
 
-					message = new String("ºñ¹Ğ¹øÈ£: ");
+					message = new String("ë¹„ë°€ë²ˆí˜¸: ");
 					userDto.setUserPassword(ScannerUtil.nextLine(scanner, message));
 
 					loginUser = auth(userDto);
 
 					while (loginUser == null) {
-						System.out.println("ÀÏÄ¡ÇÏÁö ¾ÊÀº ·Î±×ÀÎ Á¤º¸ÀÔ´Ï´Ù.");
-						message = new String("´Ù½Ã ÀÔ·ÂÇÏ½Ã°Ú¾î¿ä? y/n");
+						System.out.println("ì¼ì¹˜í•˜ì§€ ì•Šì€ ë¡œê·¸ì¸ ì •ë³´ì…ë‹ˆë‹¤.");
+						message = new String("ë‹¤ì‹œ ì…ë ¥í•˜ì‹œê² ì–´ìš”? y/n");
 
 						String agree = ScannerUtil.nextLine(scanner, message);
 						if (agree.equalsIgnoreCase("n")) {
@@ -192,19 +192,19 @@ public class MovieTheater {
 							message = new String("ID: ");
 							userDto.setUserId(ScannerUtil.nextLine(scanner, message));
 
-							message = new String("ºñ¹Ğ¹øÈ£: ");
+							message = new String("ë¹„ë°€ë²ˆí˜¸: ");
 							userDto.setUserPassword(ScannerUtil.nextLine(scanner, message));
 
 							loginUser = auth(userDto);
 
 						}
 					}
-					//¸ŞÀÎÀ¸·Î
+					//ë©”ì¸ìœ¼ë¡œ
 				} else if (userChoice == 2) {
 					System.out.println();
 					System.out.println("________________________");
 					System.out.println();
-					System.out.println("¸Ş´º·Î µ¹¾Æ°¡±â");
+					System.out.println("ë©”ë‰´ë¡œ ëŒì•„ê°€ê¸°");
 					System.out.println();
 					break;
 
@@ -212,15 +212,15 @@ public class MovieTheater {
 				int gradeType = loginUser.getGrade();
 				if (gradeType == 1) {
 					
-					System.out.println("·Î±×ÀÎ ÇÑ À¯Àú ¹øÈ£ : " + loginUser.getUserId());
+					System.out.println("ë¡œê·¸ì¸ í•œ ìœ ì € ë²ˆí˜¸ : " + loginUser.getUserId());
 					
 					System.out.println();
 					System.out.println("________________________");
-					System.out.println("       À¯Àú ÆäÀÌÁö          ");
+					System.out.println("       ìœ ì € í˜ì´ì§€          ");
 					System.out.println();
 					
 					while(true) {
-						message = new String(" 1.¿µÈ­ ¸®½ºÆ®\n 2.ÁÂ¼® º¸±â\n 3.¿¹¸ÅÇÏ±â\n 4.¿¹¸Å³»¿ªº¸±â\n 5.¿¹¸ÅÃë¼Ò\n 6.ÀÌÀüÀ¸·Î");
+						message = new String(" 1.ì˜í™” ë¦¬ìŠ¤íŠ¸\n 2.ì¢Œì„ ë³´ê¸°\n 3.ì˜ˆë§¤í•˜ê¸°\n 4.ì˜ˆë§¤ë‚´ì—­ë³´ê¸°\n 5.ì˜ˆë§¤ì·¨ì†Œ\n 6.ì´ì „ìœ¼ë¡œ");
 						userChoice = ScannerUtil.nextInt(scanner, message, 1, 6);
 						if(userChoice == 1) {
 							list();
@@ -228,7 +228,7 @@ public class MovieTheater {
 						}else if (userChoice == 2){
 							list();
 							System.out.println("________________________");
-							message = new String("ÁÂ¼® º¸½Ç ¿µÈ­¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä");
+							message = new String("ì¢Œì„ ë³´ì‹¤ ì˜í™”ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”");
 							movieIdx = ScannerUtil.nextInt(scanner, message);
 							
 							movieDto = movieSelectOne(movieIdx);
@@ -242,10 +242,10 @@ public class MovieTheater {
 							list();
 							System.out.println("________________________");
 							while(true) {
-								message = new String("1. ¿¹¸ÅÇÏ±â\n2. ÀÌÀüÀ¸·Î\n");
+								message = new String("1. ì˜ˆë§¤í•˜ê¸°\n2. ì´ì „ìœ¼ë¡œ\n");
 								userChoice = ScannerUtil.nextInt(scanner, message, 1, 2);
 								if (userChoice == 1) {
-									message = new String("¿¹¸ÅÇÏ½Ç ¿µÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+									message = new String("ì˜ˆë§¤í•˜ì‹¤ ì˜í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 									movieIdx = ScannerUtil.nextInt(scanner, message);
 									
 									movieDto = movieSelectOne(movieIdx);
@@ -263,23 +263,23 @@ public class MovieTheater {
 							        r.setMovieId(movieDto.getMovieId());
 							        r.setUserNum(loginUser.getUserNum());
 							        
-									message = new String("1.¿¹¾àÇÏ½Ç ÇàÀ» ÀÔ·ÂÇÏ¼¼¿ä(1~5) , 2.Ãë¼Ò(x)");
+									message = new String("1.ì˜ˆì•½í•˜ì‹¤ í–‰ì„ ì…ë ¥í•˜ì„¸ìš”(1~5) , 2.ì·¨ì†Œ(x)");
 									r.setRow(ScannerUtil.nextInt(scanner, message, 1, 5));
 
-									message = new String("1.¿¹¾àÇÏ½Ç ¿­À» ÀÔ·ÂÇÏ¼¼¿ä (1~4) , 2.Ãë¼Ò(x)");
+									message = new String("1.ì˜ˆì•½í•˜ì‹¤ ì—´ì„ ì…ë ¥í•˜ì„¸ìš” (1~4) , 2.ì·¨ì†Œ(x)");
 									r.setColumn(ScannerUtil.nextInt(scanner, message, 1, 4));
 									
 									if(arr[r.getRow()-1][r.getColumn()-1].equals("X")){
-										System.out.println("ÀÌ¹Ì ¿¹¾àµÈ ÀÚ¸®ÀÔ´Ï´Ù.");
+										System.out.println("ì´ë¯¸ ì˜ˆì•½ëœ ìë¦¬ì…ë‹ˆë‹¤.");
 									}else {
 										arr[r.getRow()-1][r.getColumn()-1] = "X";
 										
 										reservationResult = r;
-										System.out.println(r.getRow()+"Çà" + r.getColumn() +"¿­ ÀÚ¸®°¡ ¿¹¾àµÇ¾ú½À´Ï´Ù.");
-										reservationAdd(r); //¿¹¾àµÇ¾úÀ» ½Ã ¿¹¸Å ¹øÈ£ Ãß°¡
-										System.out.println("³ªÀÇ ¿¹¾à ¹øÈ£ :" + r.getReservationId() +"¹ø");
-										System.out.println("¿¹¾àÇÑ ¿µÈ­ ¹øÈ£: " +  r.getMovieIdx() + "¹ø");
-										System.out.println("°í°´ °íÀ¯ ¹øÈ£:" + r.getUserNum() + "¹ø");
+										System.out.println(r.getRow()+"í–‰" + r.getColumn() +"ì—´ ìë¦¬ê°€ ì˜ˆì•½ë˜ì—ˆìŠµë‹ˆë‹¤.");
+										reservationAdd(r); //ì˜ˆì•½ë˜ì—ˆì„ ì‹œ ì˜ˆë§¤ ë²ˆí˜¸ ì¶”ê°€
+										System.out.println("ë‚˜ì˜ ì˜ˆì•½ ë²ˆí˜¸ :" + r.getReservationId() +"ë²ˆ");
+										System.out.println("ì˜ˆì•½í•œ ì˜í™” ë²ˆí˜¸: " +  r.getMovieIdx() + "ë²ˆ");
+										System.out.println("ê³ ê° ê³ ìœ  ë²ˆí˜¸:" + r.getUserNum() + "ë²ˆ");
 	
 									}
 																		
@@ -287,7 +287,7 @@ public class MovieTheater {
 									System.out.println();
 									System.out.println("________________________");
 									System.out.println();
-									System.out.println(" ÀÌÀüÀ¸·Î ");
+									System.out.println(" ì´ì „ìœ¼ë¡œ ");
 									System.out.println();
 									break;
 								}
@@ -295,13 +295,13 @@ public class MovieTheater {
 							
 						}else if(userChoice == 4) {
 							System.out.println("________________________");
-							System.out.println("³ªÀÇ ¿¹¸Å ³»¿ª");
+							System.out.println("ë‚˜ì˜ ì˜ˆë§¤ ë‚´ì—­");
 							System.out.println();
-							System.out.println("³ªÀÇ À¯Àú °íÀ¯ ¹øÈ£ : " + loginUser.getUserNum());
+							System.out.println("ë‚˜ì˜ ìœ ì € ê³ ìœ  ë²ˆí˜¸ : " + loginUser.getUserNum());
 								
 								if(loginUser.getUserNum() == reservationResult.getUserNum() && resList.contains(reservationResult)) {
 								  for(ReservationDTO r : resList) {
-									System.out.println("³» ¿¹¾à ¹øÈ£: " + r.getReservationId());	
+									System.out.println("ë‚´ ì˜ˆì•½ ë²ˆí˜¸: " + r.getReservationId());	
 								  	}
 								}
 								  System.out.println("________________________");
@@ -309,24 +309,24 @@ public class MovieTheater {
 						}else if(userChoice == 5) {
 							
 							System.out.println("________________________");
-							System.out.println("¿¹¸Å Ãë¼Ò Ã¢");
+							System.out.println("ì˜ˆë§¤ ì·¨ì†Œ ì°½");
 							System.out.println();
 							
 							for(ReservationDTO r : resList) {
 								if(loginUser.getUserNum() == reservationResult.getUserNum()) {
-								System.out.println("³» ¿¹¾à ¹øÈ£: " + r.getReservationId()+"\n");
+								System.out.println("ë‚´ ì˜ˆì•½ ë²ˆí˜¸: " + r.getReservationId()+"\n");
 							}
 						}
-							 message = new String("Ãë¼Ò ÇÏ½Ç ¿¹¸Å ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+							 message = new String("ì·¨ì†Œ í•˜ì‹¤ ì˜ˆë§¤ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 							 reservationId = ScannerUtil.nextInt(scanner, message);
 
 							 reservationResult = resverationSelectOne(reservationId);
 								
-								message = new String("¿¹¸Å¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (y/n)");
+								message = new String("ì˜ˆë§¤ë¥¼ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n)");
 								
 								String yesNo = ScannerUtil.nextLine(scanner, message);
 								if (yesNo.equalsIgnoreCase("y")) {
-									System.out.println("»èÁ¦ µÇ¾ú½À´Ï´Ù.");
+									System.out.println("ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 									reservationDelete(reservationResult);
 								}
 							 
@@ -338,28 +338,28 @@ public class MovieTheater {
 					System.out.println();
 					System.out.println("________________________");
 					System.out.println();
-					System.out.println("     °ü¸®ÀÚ ÆäÀÌÁö        ");
+					System.out.println("     ê´€ë¦¬ì í˜ì´ì§€        ");
 					System.out.println();
 
 					while (true) {
-						message = new String("1. ¿µÈ­ ¸®½ºÆ®\n2. ·Î±×¾Æ¿ô");
+						message = new String("1. ì˜í™” ë¦¬ìŠ¤íŠ¸\n2. ë¡œê·¸ì•„ì›ƒ");
 						userChoice = ScannerUtil.nextInt(scanner, message, 1, 2);
 						if (userChoice == 1) {
 							System.out.println();
 							System.out.println("________________________");
 							System.out.println();
 							while (true) {
-								message = new String("1. Á¶È¸\n2. µî·Ï\n3. ¼öÁ¤\n4. »èÁ¦\n5. °ü¸®ÀÚÆäÀÌÁö·Î");
+								message = new String("1. ì¡°íšŒ\n2. ë“±ë¡\n3. ìˆ˜ì •\n4. ì‚­ì œ\n5. ê´€ë¦¬ìí˜ì´ì§€ë¡œ");
 								userChoice = ScannerUtil.nextInt(scanner, message, 1, 5);
 								if (userChoice == 1) {
 										
 										list();
 										select();
 										
-								} else if (userChoice == 2) { //¿µÈ­ µî·Ï
+								} else if (userChoice == 2) { //ì˜í™” ë“±ë¡
 									viewMoveRegist();
 									
-								} else if (userChoice == 3) { //¿µÈ­ ¼öÁ¤
+								} else if (userChoice == 3) { //ì˜í™” ìˆ˜ì •
 					
 									viewMovieEdit();
 							
@@ -371,28 +371,28 @@ public class MovieTheater {
 									System.out.println();
 									System.out.println("________________________");
 									System.out.println();
-									System.out.println(" °ü¸®ÀÚ ÆäÀÌÁö ");
+									System.out.println(" ê´€ë¦¬ì í˜ì´ì§€ ");
 									System.out.println();
 									break;
 								}
 								
-							} //°ü¸®ÀÚ ÆäÀÌÁö ¿µÈ­°ü¸® while ³¡
+							} //ê´€ë¦¬ì í˜ì´ì§€ ì˜í™”ê´€ë¦¬ while ë
 							
 						} else if (userChoice == 2) {
 								System.out.println();
 								System.out.println("____________________");
-								System.out.println(" ¸ŞÀÎ ÆäÀÌÁö ");
+								System.out.println(" ë©”ì¸ í˜ì´ì§€ ");
 								System.out.println();
 								break;
 								
 							}
-						  } // while¹® ³¡
+						  } // whileë¬¸ ë
 					
 						} else if (userChoice == 3) {
 							System.out.println();
 							System.out.println("*****************************************************");
 							System.out.println("*                                                   *");
-							System.out.println("* Á¾·áµÇ¾ú½À´Ï´Ù. *");
+							System.out.println("* ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. *");
 							System.out.println("*                                                   *");
 							System.out.println("*****************************************************");
 							System.out.println();
@@ -408,21 +408,21 @@ public class MovieTheater {
 		System.out.println();
 		System.out.println("________________________");
 		System.out.println();
-		System.out.println("¿µÈ­ »èÁ¦");
+		System.out.println("ì˜í™” ì‚­ì œ");
 		System.out.println();
 		list();
 		
 
-		message = new String("»èÁ¦ÇÒ ¿µÈ­ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		message = new String("ì‚­ì œí•  ì˜í™” ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		movieIdx = ScannerUtil.nextInt(scanner, message);
 		
 		movieDto = movieSelectOne(movieIdx);
 		
-		message = new String("¼±ÅÃÇÑ ¿µÈ­¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (y/n)");
+		message = new String("ì„ íƒí•œ ì˜í™”ë¥¼ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n)");
 		
 		String yesNo = ScannerUtil.nextLine(scanner, message);
 		if (yesNo.equalsIgnoreCase("y")) {
-			System.out.println("»èÁ¦ µÇ¾ú½À´Ï´Ù.");
+			System.out.println("ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			movieDelete(movieDto);
 		}
 	}
@@ -433,25 +433,25 @@ public class MovieTheater {
 		System.out.println();
 		System.out.println("________________________");
 		System.out.println();
-		System.out.println("¿µÈ­ µî·Ï");
+		System.out.println("ì˜í™” ë“±ë¡");
 		System.out.println();
 
-		message = new String("Á¦¸ñ: ");
+		message = new String("ì œëª©: ");
 		m.setMovieName(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("»ó¿µ½Ã°£: ");
+		message = new String("ìƒì˜ì‹œê°„: ");
 		m.setRunningTime(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("°¨µ¶: ");
+		message = new String("ê°ë…: ");
 		m.setDirecter(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("Àå¸£: ");
+		message = new String("ì¥ë¥´: ");
 		m.setMovieGenre(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("ÁÙ°Å¸®: ");
+		message = new String("ì¤„ê±°ë¦¬: ");
 		m.setMovieSummary(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("°¡°İ: ");
+		message = new String("ê°€ê²©: ");
 		m.setMoviePrice(ScannerUtil.nextInt(scanner, message));
 
 		addMovie(m);
@@ -462,38 +462,38 @@ public class MovieTheater {
 		System.out.println();
 		System.out.println("________________________");
 		System.out.println();
-		System.out.println("¿µÈ­ ¼öÁ¤");
+		System.out.println("ì˜í™” ìˆ˜ì •");
 		System.out.println();
 
 		list();
 
-		message = new String("¼öÁ¤ÇÏ½Ç ¿µÈ­ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		message = new String("ìˆ˜ì •í•˜ì‹¤ ì˜í™” ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		movieIdx = ScannerUtil.nextInt(scanner, message);
 		
 		movieDto = movieSelectOne(movieIdx);
 		
-		message = new String("Á¦¸ñ: ");
+		message = new String("ì œëª©: ");
 		movieDto.setMovieName(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("»ó¿µ½Ã°£: ");
+		message = new String("ìƒì˜ì‹œê°„: ");
 		movieDto.setRunningTime(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("°¨µ¶: ");
+		message = new String("ê°ë…: ");
 		movieDto.setDirecter(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("Àå¸£: ");
+		message = new String("ì¥ë¥´: ");
 		movieDto.setMovieGenre(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("ÁÙ°Å¸®: ");
+		message = new String("ì¤„ê±°ë¦¬: ");
 		movieDto.setMovieSummary(ScannerUtil.nextLine(scanner, message));
 
-		message = new String("°¡°İ: ");
+		message = new String("ê°€ê²©: ");
 		movieDto.setMoviePrice(ScannerUtil.nextInt(scanner, message));
 
 		movieUpdate(movieDto);
 	}
 
-	// È¸¿ø°¡ÀÔ ½Ã Áßº¹µÈ °ª À¯È¿¼º °Ë»ç ÇÏ±â
+	// íšŒì›ê°€ì… ì‹œ ì¤‘ë³µëœ ê°’ ìœ íš¨ì„± ê²€ì‚¬ í•˜ê¸°
 	public boolean validateUsername(UserDTO user) {
 		for (UserDTO u : userList) {
 			if (u.getUserId().equals(user.getUserId())) {
@@ -503,7 +503,7 @@ public class MovieTheater {
 		return false;
 	}
 
-	// ·Î±×ÀÎ½Ã userList¿¡ Ãß°¡ÇÏ±â, À¯Àú idx +1 ÇÏ±â.
+	// ë¡œê·¸ì¸ì‹œ userListì— ì¶”ê°€í•˜ê¸°, ìœ ì € idx +1 í•˜ê¸°.
 	public void add(UserDTO u) {
 		u.setUserNum(userNum++);
 		u.setGrade(1);
@@ -521,7 +521,7 @@ public class MovieTheater {
 		return null;
 	}
 
-	// ·Î±×ÀÎ À¯È¿¼º °Ë»ç
+	// ë¡œê·¸ì¸ ìœ íš¨ì„± ê²€ì‚¬
 	public UserDTO auth(UserDTO user) {
 		for (UserDTO u : userList) {
 			if (u.getUserId().equals(user.getUserId()) && u.getUserPassword().equals(u.getUserPassword())) {
@@ -531,7 +531,7 @@ public class MovieTheater {
 		return null;
 	}
 
-	// ¿µÈ­ ÀüÃ¼ ¸®½ºÆ® Ãâ·Â
+	// ì˜í™” ì „ì²´ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 	public ArrayList<MovieInfoDTO> printAll() {
 		for (MovieInfoDTO m : movieList) {
 
@@ -539,7 +539,7 @@ public class MovieTheater {
 		return movieList;
 	}
 
-	// ¿µÈ­ ÇÏ³ª ¼±ÅÃ
+	// ì˜í™” í•˜ë‚˜ ì„ íƒ
 	public MovieInfoDTO movieSelectOne(int movieId) {
 		for (MovieInfoDTO m : movieList) {
 			if (m.getMovieId() == movieId) {
@@ -549,14 +549,14 @@ public class MovieTheater {
 		return null;
 	}
 
-	// ¿µÈ­ µî·Ï
+	// ì˜í™” ë“±ë¡
 	public void addMovie(MovieInfoDTO m) {
 		m.setMovieId(movieIdx++);
 
 		movieList.add(m);
 	}
 
-	// ¿µÈ­ ¼öÁ¤
+	// ì˜í™” ìˆ˜ì •
 	public void movieUpdate(MovieInfoDTO updated) {
 		for (MovieInfoDTO m : movieList) {
 			if (m.getMovieId() == updated.getMovieId()) {
@@ -568,24 +568,24 @@ public class MovieTheater {
 		}
 	}
 
-	// ¿µÈ­ »èÁ¦
+	// ì˜í™” ì‚­ì œ
 	public void movieDelete(MovieInfoDTO m) {
 		movieList.remove(m);
 	}
 
-	//¿¹¾à Ãß°¡
+	//ì˜ˆì•½ ì¶”ê°€
 	public void reservationAdd(ReservationDTO r) {
 		r.setReservationId(reservationId++);
 		resList.add(r);
 	}
 	
-	//¿¹¾à »èÁ¦
+	//ì˜ˆì•½ ì‚­ì œ
 	public void reservationDelete(ReservationDTO r) {
 		resList.remove(r);
 		
 	}
 	
-	// ¿¹¾à ÇÏ³ª ¼±ÅÃ
+	// ì˜ˆì•½ í•˜ë‚˜ ì„ íƒ
 	public ReservationDTO  resverationSelectOne(int resverationId) {
 		for (ReservationDTO r : resList) {
 			if (r.getReservationId() == resverationId) {
@@ -596,7 +596,7 @@ public class MovieTheater {
 	}
 	
 	
-	// ¿µÈ­ ¸®½ºÆ®(ÀÌ°Ç À¯Àú, °ü¸®ÀÚ ´Ù ÇÊ¿äÇØ¼­ ¸Ş¼Òµå·Î µû·Î –M)
+	// ì˜í™” ë¦¬ìŠ¤íŠ¸(ì´ê±´ ìœ ì €, ê´€ë¦¬ì ë‹¤ í•„ìš”í•´ì„œ ë©”ì†Œë“œë¡œ ë”°ë¡œ ë»„)
 	public void list() {
 
 		movieList = printAll();
@@ -605,7 +605,7 @@ public class MovieTheater {
 			System.out.println();
 			System.out.println("________________________");
 			System.out.println();
-			System.out.println("µî·ÏµÈ ¿µÈ­°¡ ¾ø½À´Ï´Ù. ¿µÈ­¸¦ µî·ÏÇØÁÖ¼¼¿ä");
+			System.out.println("ë“±ë¡ëœ ì˜í™”ê°€ ì—†ìŠµë‹ˆë‹¤. ì˜í™”ë¥¼ ë“±ë¡í•´ì£¼ì„¸ìš”");
 			System.out.println();
 			System.out.println("________________________");
 			System.out.println();
@@ -614,7 +614,7 @@ public class MovieTheater {
 		System.out.println("________________________");
 		System.out.println();
 		for (MovieInfoDTO m : movieList) {
-			System.out.printf("Id: %d  ¿µÈ­Á¦¸ñ: %s\n", m.getMovieId(), m.getMovieName());
+			System.out.printf("Id: %d  ì˜í™”ì œëª©: %s\n", m.getMovieId(), m.getMovieName());
 		}
 	}
 
@@ -624,7 +624,7 @@ public class MovieTheater {
 		System.out.println();
 		String message;
 		while (true) {
-			message = new String("1. ¹øÈ£·ÎÁ¶È¸\n2. °Ë»öÀ¸·ÎÁ¶È¸\n3. ÀÌÀüÀ¸·Î");
+			message = new String("1. ë²ˆí˜¸ë¡œì¡°íšŒ\n2. ê²€ìƒ‰ìœ¼ë¡œì¡°íšŒ\n3. ì´ì „ìœ¼ë¡œ");
 			int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
 			if (userChoice == 1) {
 				numberMovieList();
@@ -634,7 +634,7 @@ public class MovieTheater {
 				System.out.println();
 				System.out.println("________________________");
 				System.out.println();
-				System.out.println(" ÀÌÀüÀ¸·Î ");
+				System.out.println(" ì´ì „ìœ¼ë¡œ !! ");
 				System.out.println();
 				break;
 			}
@@ -642,10 +642,10 @@ public class MovieTheater {
 		}
 	}
 	
-	//¹øÈ£·Î Á¶È¸
+	//ë²ˆí˜¸ë¡œ ì¡°íšŒ
 	public void numberMovieList() {
 		String message;
-		message = new String("¿µÈ­ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä");
+		message = new String("ì˜í™” ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”");
 		movieIdx = ScannerUtil.nextInt(scanner, message);
 
 		movieDto = movieSelectOne(movieIdx);
@@ -653,9 +653,9 @@ public class MovieTheater {
 		System.out.println();
 		System.out.println("________________________");
 		System.out.println();
-		System.out.println("     ¼±ÅÃÇÑ ¿µÈ­    ");
+		System.out.println("     ì„ íƒí•œ ì˜í™”    ");
 		System.out.println();
-		System.out.printf("Á¦¸ñ: %s\n»ó¿µ½Ã°£: %s\n°¨µ¶: %s\nÀå¸£: %s\nÁÙ°Å¸®: %s\n°¡°İ: %d\n", movieDto.getMovieName(), movieDto.getRunningTime(),
+		System.out.printf("ì œëª©: %s\nìƒì˜ì‹œê°„: %s\nê°ë…: %s\nì¥ë¥´: %s\nì¤„ê±°ë¦¬: %s\nê°€ê²©: %d\n", movieDto.getMovieName(), movieDto.getRunningTime(),
 				movieDto.getDirecter(), movieDto.getMovieGenre(), movieDto.getMovieSummary(), movieDto.getMoviePrice());
 		System.out.println();
 		System.out.println("________________________");
@@ -665,60 +665,60 @@ public class MovieTheater {
 	public void searchMovieList(String search) {
 		String message;
 		while (true) {
-			message = new String("1. Á¦¸ñÀ¸·Î°Ë»ö\n2. °¨µ¶¸íÀ¸·ÎÁ¶È¸\n3. Àå¸£·Î°Ë»ö\n4.ÀÌÀüÀ¸·Î");
+			message = new String("1. ì œëª©ìœ¼ë¡œê²€ìƒ‰\n2. ê°ë…ëª…ìœ¼ë¡œì¡°íšŒ\n3. ì¥ë¥´ë¡œê²€ìƒ‰\n4.ì´ì „ìœ¼ë¡œ");
 			int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
 			if (userChoice == 1) {
-				message = new String("Á¦¸ñÀÔ·Â:");
+				message = new String("ì œëª©ì…ë ¥:");
 				search = ScannerUtil.nextLine(scanner, message);
 				MovieInfoDTO titleSearch = null;
 
 				for (MovieInfoDTO m : movieList) {
 					if (m.getMovieName().equals(search)) {
 						titleSearch = m;
-						System.out.println("------------- °Ë»ö °á°ú ------------------");
-						System.out.printf("Id: %d  ¿µÈ­Á¦¸ñ: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
+						System.out.println("------------- ê²€ìƒ‰ ê²°ê³¼ ------------------");
+						System.out.printf("Id: %d  ì˜í™”ì œëª©: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
 						System.out.println("----------------------------------------");
 					}
 
 					if (!m.getMovieName().equals(search)) {
-						System.out.println("ÀÏÄ¡ÇÏ´Â °á°ú°¡ ¾ø½À´Ï´Ù.");
+						System.out.println("ì¼ì¹˜í•˜ëŠ” ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 					}
 
 				}
 
 			} else if (userChoice == 2) {
-				message = new String("°¨µ¶¸íÀÔ·Â:");
+				message = new String("ê°ë…ëª…ì…ë ¥:");
 				search = ScannerUtil.nextLine(scanner, message);
 				MovieInfoDTO titleSearch = null;
 
 				for (MovieInfoDTO m : movieList) {
 					if (m.getDirecter().equals(search)) {
 						titleSearch = m;
-						System.out.println("------------- °Ë»ö °á°ú ------------------");
-						System.out.printf("Id: %d  ¿µÈ­Á¦¸ñ: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
+						System.out.println("------------- ê²€ìƒ‰ ê²°ê³¼ ------------------");
+						System.out.printf("Id: %d  ì˜í™”ì œëª©: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
 						System.out.println("----------------------------------------");
 					}
 
 					if (!m.getDirecter().equals(search)) {
-						System.out.println("ÀÏÄ¡ÇÏ´Â °á°ú°¡ ¾ø½À´Ï´Ù.");
+						System.out.println("ì¼ì¹˜í•˜ëŠ” ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 					}
 
 				}
 			} else if (userChoice == 3) {
-				message = new String("Àå¸£ÀÔ·Â:");
+				message = new String("ì¥ë¥´ì…ë ¥:");
 				search = ScannerUtil.nextLine(scanner, message);
 				MovieInfoDTO titleSearch = null;
 
 				for (MovieInfoDTO m : movieList) {
 					if (m.getMovieGenre().equals(search)) {
 						titleSearch = m;
-						System.out.println("------------- °Ë»ö °á°ú ------------------");
-						System.out.printf("Id: %d  ¿µÈ­Á¦¸ñ: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
+						System.out.println("------------- ê²€ìƒ‰ ê²°ê³¼ ------------------");
+						System.out.printf("Id: %d  ì˜í™”ì œëª©: %s\n", titleSearch.getMovieId(), titleSearch.getMovieName());
 						System.out.println("----------------------------------------");
 					}
 
 					if (!m.getMovieGenre().equals(search)) {
-						System.out.println("ÀÏÄ¡ÇÏ´Â °á°ú°¡ ¾ø½À´Ï´Ù.");
+						System.out.println("ì¼ì¹˜í•˜ëŠ” ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 					}
 
 				}
@@ -726,7 +726,7 @@ public class MovieTheater {
 				System.out.println();
 				System.out.println("________________________");
 				System.out.println();
-				System.out.println(" ÀÌÀüÀ¸·Î ");
+				System.out.println(" ì´ì „ìœ¼ë¡œ !! ");
 				System.out.println();
 				break;
 

@@ -1,11 +1,11 @@
 package kr.kassadin.knife.util;
 
-//¿ì¸®°¡ ScannerÀÇ ¸Ş¼Òµå¸¦ »ç¿ëÇÒ¶§
-//Á»´õ Æí¸®ÇÏ°Ô »ç¿ëÇÒ ¼ö ÀÖ´Â ¸Ş¼Òµå¸¦ ¿ì¸®°¡ ±¸ÇöÇØ³õÀº 
-//Å¬·¡½º
+//ìš°ë¦¬ê°€ Scannerì˜ ë©”ì†Œë“œë¥¼ ì‚¬ìš©í• ë•Œ
+//ì¢€ë” í¸ë¦¬í•˜ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ë©”ì†Œë“œë¥¼ ìš°ë¦¬ê°€ êµ¬í˜„í•´ë†“ì€ 
+//í´ë˜ìŠ¤
 import java.util.Scanner;
 public class ScannerUtil {
- // 1. ¹öÆÛ¸Ş¸ğ¸®¿¡ ¿£ÅÍÅ°°¡ ³²¾ÆÀÖÀ» ¶§ ÇØ°áÇÒ nextLine() ¸Ş¼Òµå
+ // 1. ë²„í¼ë©”ëª¨ë¦¬ì— ì—”í„°í‚¤ê°€ ë‚¨ì•„ìˆì„ ë•Œ í•´ê²°í•  nextLine() ë©”ì†Œë“œ
  public static String nextLine(Scanner scanner, String message) {
      System.out.println(message);
      System.out.print("> ");        
@@ -26,7 +26,7 @@ public class ScannerUtil {
      return Integer.parseInt(temp);                
  }
  
- // »ç¿ëÀÚ·ÎºÎÅÍ Æ¯Á¤ ¹üÀ§³»ÀÇ ¼ıÀÚ°ªÀ» ÀÔ·Â¹Ş´Â nextInt() ¸Ş¼Òµå
+ // ì‚¬ìš©ìë¡œë¶€í„° íŠ¹ì • ë²”ìœ„ë‚´ì˜ ìˆ«ìê°’ì„ ì…ë ¥ë°›ëŠ” nextInt() ë©”ì†Œë“œ
  public static int nextInt(Scanner scanner, String message, int min, int max) {
      
      int number = nextInt(scanner, message);

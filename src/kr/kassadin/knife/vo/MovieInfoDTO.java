@@ -1,19 +1,19 @@
 package kr.kassadin.knife.vo;
 
 public class MovieInfoDTO {
-    // ¿µÈ­¹øÈ£ (¾Æ·¡ÀÇ Á¤º¸¸¦ ÀúÀåÇÒ)
+    // ì˜í™”ë²ˆí˜¸ (ì•„ë˜ì˜ ì •ë³´ë¥¼ ì €ì¥í• )
     private int movieId;
-    // ¿µÈ­Á¦¸ñ
+    // ì˜í™”ì œëª©
     private String movieName;
-    // ¿µÈ­ »ó¿µ½Ã°£
+    // ì˜í™” ìƒì˜ì‹œê°„
     private String runningTime;
-    // ¿µÈ­ Àå¸£
+    // ì˜í™” ì¥ë¥´
     private String movieGenre;
-    // ¿µÈ­ ÁÙ°Å¸®
+    // ì˜í™” ì¤„ê±°ë¦¬
     private String movieSummary;
-    //°¨µ¶
+    //ê°ë…
     private String directer;
-    //°¡°İ
+    //ê°€ê²©
     private int moviePrice;
     
     // Getter, Setter
